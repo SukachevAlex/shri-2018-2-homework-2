@@ -1,0 +1,40 @@
+{
+    "name": "shri",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "",
+    "author": "",
+    "license": "MIT",
+    "scripts": {
+        "dev": "webpack --mode development",
+        "start": "webpack-dev-server --mode development --open",
+        "build": "webpack --mode production",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint ./src/**/*.js --quiet",
+        "deploy": "git subtree push --prefix dist origin gh-pages"
+    },
+    "devDependencies": {
+        "autoprefixer": "^9.1.5",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-preset-env": "^1.7.0",
+        "clean-webpack-plugin": "^0.1.19",
+        "copy-webpack-plugin": "^4.5.2",
+        "css-loader": "^1.0.0",
+        "eslint": "^5.6.1",
+        "eslint-config-yandex": "^1.0.6",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "file-loader": "^2.0.0",
+        "html-webpack-plugin": "^3.2.0",
+        "image-webpack-loader": "^4.3.1",
+        "mini-css-extract-plugin": "^0.4.3",
+        "node-sass": "^4.9.3",
+        "postcss-loader": "^3.0.0",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.0",
+        "stylelint": "^9.6.0",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.9"
+    }
+}
