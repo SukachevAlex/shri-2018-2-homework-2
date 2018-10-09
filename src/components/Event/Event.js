@@ -1,3 +1,5 @@
+import { mouseDown, mouseMove, mouseUp } from '../PointerEvents/PointerEvents';
+
 const eventSizes = {
     's': 'event__item_s',
     'm': 'event__item_m',
@@ -18,7 +20,7 @@ export function generateEvents(events) {
     const eventDescription = template.querySelector('.event__description');
     const eventData = template.querySelector('.event__data');
 
-    let {type, title, source, time, description, icon, size, data} = events;
+    let { type, title, source, time, description, icon, size, data } = events;
 
     eventItem.className = `event__item event__item_${type} ${eventSizes[size]}`;
     eventIcon.className = `event__icon event__icon_${icon}`;
@@ -55,7 +57,7 @@ function generateData(template, icon, data) {
     const eventThermal = template.querySelector('.event__thermal');
     const eventPlayer = template.querySelector('.event__player');
     const eventButtons = template.querySelector('.event__buttons');
-    const eventImage = template.querySelector('.event__picture');
+    const eventImage = template.querySelector('.event__image');
 
     if (icon === 'stats') {
         // create graph chart.js
@@ -96,24 +98,16 @@ function generateData(template, icon, data) {
     }
 
     if (icon === 'cam') {
-        let [img, ext] = data.image.split('.');
-        let html = `
-            <source 
-                media="(min-width: 768px)"
-                srcset="./img/${data.image}, 
-                        ./img/${img}@2x.${ext} 2x, 
-                        ./img/${img}@3x.${ext} 3x" />
-            <img 
-                class="event__image"
-                src="./img/${data.image}" 
-                srcset="./img/${img}@2x.${ext} 2x, 
-                        ./img/${img}@3x.${ext} 3x"
-                alt="Event image">
-        `;
 
-        eventImage.innerHTML = html;
+        eventImage.style.backgroundImage = `url(./img/${data.image})`;
+        eventImage.style.backgroundPosition = '0 0';
+        eventImage.addEventListener('pointerdown', mouseDown.bind(null, eventImage));
+        eventImage.addEventListener('pointermove', mouseMove);
+        eventImage.addEventListener('pointerup', mouseUp);
+        eventImage.addEventListener('pointercancel', mouseUp);
+
     } else {
-        template.querySelector('.picture__info').remove();
+        template.querySelector('.image__info').remove();
         eventImage.remove();
     }
 }
