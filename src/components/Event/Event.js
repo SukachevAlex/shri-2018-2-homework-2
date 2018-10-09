@@ -58,6 +58,7 @@ function generateData(template, icon, data) {
     const eventPlayer = template.querySelector('.event__player');
     const eventButtons = template.querySelector('.event__buttons');
     const eventImage = template.querySelector('.event__image');
+    const imageInfo = template.querySelector('.image__info');
 
     if (icon === 'stats') {
         // create graph chart.js
@@ -100,14 +101,16 @@ function generateData(template, icon, data) {
     if (icon === 'cam') {
 
         eventImage.style.backgroundImage = `url(./img/${data.image})`;
-        eventImage.style.backgroundPosition = '0 0';
+        eventImage.style.backgroundPosition = '0 50%';
+        //like on mockup
+        eventImage.style.backgroundSize = '178%';
         eventImage.addEventListener('pointerdown', mouseDown.bind(null, eventImage));
-        eventImage.addEventListener('pointermove', mouseMove);
+        eventImage.addEventListener('pointermove', mouseMove.bind(null, imageInfo));
         eventImage.addEventListener('pointerup', mouseUp);
         eventImage.addEventListener('pointercancel', mouseUp);
 
     } else {
-        template.querySelector('.image__info').remove();
+        imageInfo.remove();
         eventImage.remove();
     }
 }
