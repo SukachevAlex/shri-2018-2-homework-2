@@ -101,9 +101,10 @@ function generateData(template, icon, data) {
     if (icon === 'cam') {
 
         eventImage.style.backgroundImage = `url(./img/${data.image})`;
-        eventImage.style.backgroundPosition = '0 50%';
+        eventImage.style.backgroundPosition = '0 0';
         //like on mockup
         eventImage.style.backgroundSize = '178%';
+        eventImage.style.filter = 'brightness(50%)';
         eventImage.addEventListener('pointerdown', mouseDown.bind(null, eventImage));
         eventImage.addEventListener('pointermove', mouseMove.bind(null, imageInfo));
         eventImage.addEventListener('pointerup', mouseUp);
