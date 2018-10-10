@@ -1,4 +1,4 @@
-import { mouseDown, mouseMove, mouseUp } from '../PointerEvents/PointerEvents';
+import {mouseDown, mouseMove, mouseUp} from '../PointerEvents/PointerEvents';
 
 const eventSizes = {
     's': 'event__item_s',
@@ -20,7 +20,7 @@ export function generateEvents(events) {
     const eventDescription = template.querySelector('.event__description');
     const eventData = template.querySelector('.event__data');
 
-    let { type, title, source, time, description, icon, size, data } = events;
+    let {type, title, source, time, description, icon, size, data} = events;
 
     eventItem.className = `event__item event__item_${type} ${eventSizes[size]}`;
     eventIcon.className = `event__icon event__icon_${icon}`;
@@ -102,7 +102,7 @@ function generateData(template, icon, data) {
 
         eventImage.style.backgroundImage = `url(./img/${data.image})`;
         eventImage.style.backgroundPosition = '0 0';
-        //like on mockup
+        // like on mockup
         eventImage.style.backgroundSize = '178%';
         eventImage.style.filter = 'brightness(50%)';
         eventImage.addEventListener('pointerdown', mouseDown.bind(null, eventImage));
